@@ -4,11 +4,12 @@ Welcome to my Regex tutorial! Hope you have as much fun reading as i did writing
 
 ## Summary
 
-Briefly summarize the regex you will be describing and what you will explain. Include a code snippet of the regex. Replace this text with your summary.
 For the purpost of this tutorial we will go over the following regular expression
 
 Matching an Email: 
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+
+With this Regex code you are able use it for validation to make sure emails follow a correct format. 
 
 ## Table of Contents
 
@@ -41,11 +42,11 @@ We will define what everything means inside the parantheses later in the tutoria
 ### Quantifiers
 Quantifiers sets the parameters for how many characters you need for it to be a match. Here are some examples of Quantifiers
 
-* — You have a match zero or more times
+- '*' You have a match zero or more times
 
-+ — You have match a minimum of one time
+- '+' You have match a minimum of one time
 
-? — You can either have no match or one match
+- '?'  You can either have no match or one match
 
 To use our matching email code as an example, if we used the code xyz+ in our regex then this will match any string xy followed by minnimum one z. 
 
@@ -62,24 +63,82 @@ If you look at our regex example.
 
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
-It is not present in our code. 
+You can see how it is not present in our code. 
 
 ### Character Classes
+Character classes in a regex will define a set of characters any of which can happening in a input string to trigger a match.
+Here are some examples of other character classes that are common
+
+- [ABC] The Characters found inside the brakets  match any character in the set.
+- [^ABC] Adding a caret will find any character not in the set.
+- [A-Z] Adding a dash between the two characters will make it a Range selection.
+- \w Matches any word character (alphanumeric & underscore). It matches the ASCII characters [A-Za-z0-9_] including Latin alphabets, digits, and the underscore (_).
+- \W matches any character except a word character like non-Latin letter or space.
+- \d Matches any digit character from 0 to 9.
+- \p Matches a character in the specified unicode category.
+
+We have \d  present in the email matching code and what it will do is match a single letter character, a-z, after the @ sign in the email address. Thus making sure that a letter is matched after the @ in the email and not a number or special character.
 
 ### Flags
+A flag changes the default searching behavior of a regular expression making a regex search in a different way.
+
+A flag is denoted with a single lowercase alphabetic character.
+
+We have a total of 6 flags
+
+ -  i= Ignores casing which makes the expression search without case sensitivity 
+ - g= In a global search this makes the expression search for all occurences.
+ - m=  Multiline flag means making the boundary characters ^ and $ we mentioned earlier match the beginning and ending of every single line instead of the beginning and ending of the whole string..
+ - u= Unicode Makes the expression assume individual characters as code points but not code units, and will match the 32-bit characters as well.
+ - y= Will make the expression start searching the index indicated in its lastIndex property.
+ - s=Dot All Makes the wild character "." match the newlines as well.
+
+In our matching email code that is being used for this turorial a regex flag is not used. But i put them in there because its important to know!
 
 ### Grouping and Capturing
+But this next part we can continue with the code for matching an email:
+
+/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+
+Thats the code as a reminder now lets continue on to grouping and capturing...
+
+After /^ we have ([a-z0-9_\.-]+) as the first group appearing in our regex. Before moving on to a "match" with the next part of the code that must be true. ([\da-z\.-]+) is the second group and then we have ([a-z\.]{2,6}) as the third and final group that appears in our regex.
+
+Each group has everything enclosed and captured within the parenthesis(). This isolates part of the full match and then assignes it an ID that will later be referred to within the regex. 
 
 ### Bracket Expressions
+A bracket expression (which is an expression enclosed in"[]" ) will match a specific set of single characters, and could match a specific set of multi-character elements, based on the non-empty set of list expressions contained within the bracket expression.
 
 ### Greedy and Lazy Match
+- 'Greedy' is when you matching the longest string possible.
+
+- 'Lazy' means matching the shortest string possible. 
+
+This section doesn't apply to the email matching code we are using in our tutorial 
 
 ### Boundaries
+The \b is an anchor similar the caret and the dollar sign. It matches at a position that is called the “word boundary”. This match is zero-length. A word boundary, given by the special character \b, is a position that bounds a word i.e a place where the word starts or ends. 
+
+Boundaries are not used in the matching an email code. 
 
 ### Back-references
+Backreferences match the same characters as previously matched by a capturing group. Lets say you want to match a pair of opening and closing HTML tags along with the characters between them. By putting the opening tag into a backreference, you are able to reuse the name of the tag for the closing tag.
+
+So to sum up you use back references to match the same text again.
+
+Back-references are specified with backslash and a single digit (' \1 '). The part of the regular expression they refer to is called a subexpression, and is designated with parentheses.
+
+again this isnt used in the matching an email REGEX we have been using for this tutorial.
 
 ### Look-ahead and Look-behind
 
+Lookahead and lookbehind which can also be refered to as a lookaround are zero-length assertions just like the start and end of line, and start and end of word anchors. The difference is that lookaround actually matches characters, but then returns only the result which is a match or no match. 
+
+Lookaround is not used in the matching an email code.
+
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+This tutorial was written by Marco Saverino
+
+Github account:
+https://github.com/MarcoSaverino
